@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace MassTransitOrderProject.Shared.Models.Product.Models
 {
-    internal class Product
-    {
-    }
+    public record Product(Guid ProductId, double Quantity, double Price);
 }

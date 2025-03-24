@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="masstransit" Version="8.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MassTransitOrderProject.Shared\MassTransitOrderProject.Shared.csproj" />
   </ItemGroup>
 
 </Project>

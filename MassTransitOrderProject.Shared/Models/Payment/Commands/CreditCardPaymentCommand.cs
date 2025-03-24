@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace CodeApp.Masstransit.Shared.Models.Payment.Commands;
+namespace MassTransitOrderProject.Shared.Models.Payment.Commands;
 
 [EntityName("payment.creditcardpaymentcommand")]
 public record CreditCardPaymentCommand
