@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using CodeApp.Masstransit.Shared.Models.Payment.Events;
+using MassTransit;
 using MassTransitOrderProject.Shared.Models.Payment.Commands;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,14 @@ namespace MassTransitOrderProject.Payment.Service.Consumers
     public class CreditCardPaymentCommandConsumer : IConsumer<CreditCardPaymentCommand>
     {
         private readonly ILogger<CreditCardPaymentCommandConsumer> _logger;
-
-        public CreditCardPaymentCommandConsumer(ILogger<CreditCardPaymentCommandConsumer> logger)
+        private readonly IBus _bus;
+        public CreditCardPaymentCommandConsumer(IBus bus ,ILogger<CreditCardPaymentCommandConsumer> logger)
         {
+            _bus = bus;
             _logger = logger;
         }
 
-        public Task Consume(ConsumeContext<CreditCardPaymentCommand> context)
+        public async Task Consume(ConsumeContext<CreditCardPaymentCommand> context)
         {
             //Business Rules
             //Find the customer stored credit card
@@ -26,7 +28,19 @@ namespace MassTransitOrderProject.Payment.Service.Consumers
             var customerId = context.Message.CustomerId;
             var orderId = context.Message.OrderId;
             var amount = context.Message.Amount;
-            throw new NotImplementedException();
+
+            var cardNumber = "**** 1362";
+            var paymentId = Guid.NewGuid();
+
+            await _bus.Publish<OrderPaymentReceivedEvent>(message: new OrderPaymentReceivedEvent(
+                CustomerId:customerId,Amount: amount,CardNumber:cardNumber,OrderId:orderId,PaymentNumberGuid:paymentId));
+
+            _logger.LogInformation(message: "Payment received, OrderId: {orderId}, PaymentId: {paymentId}",orderId,paymentId);
+
+
+            
+
+          
         }
     }
 }

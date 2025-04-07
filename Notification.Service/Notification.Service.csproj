@@ -4,15 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-MassTransitOrderProject.Payment.Service-3d2fccbd-2310-41af-be98-5f3876b26dac</UserSecretsId>
+    <UserSecretsId>dotnet-Notification.Service-0db65cea-c618-47f9-999e-e5710cf9f3bc</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MassTransitOrderProject.Shared\MassTransitOrderProject.Shared.csproj" />
   </ItemGroup>
 </Project>
